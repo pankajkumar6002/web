@@ -1,318 +1,235 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pankaj Kumar · NISER</title>
-<meta name="description" content="Pankaj Kumar, PhD scholar at NISER Bhubaneswar, working on graph representation learning and the robustness of LLMs.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.dataset.theme=localStorage.getItem('pk-theme')||'light'</script>
+<title>Pankaj Kumar · NISER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <style>
 :root{--bg:oklch(0.995 0.002 250);--band:oklch(0.965 0.01 252);--card:oklch(1 0 0);--text:oklch(0.26 0.02 255);--muted:oklch(0.5 0.018 255);--line:oklch(0.9 0.01 252);--blue:oklch(0.5 0.14 255);--blue-2:oklch(0.4 0.13 255);--blue-soft:oklch(0.94 0.03 255);--amber:oklch(0.55 0.12 65);--amber-line:oklch(0.85 0.07 75);--ph:oklch(0.93 0.012 252);--serif:"Source Serif 4",Georgia,serif;--sans:"Source Sans 3",system-ui,sans-serif}
 [data-theme="dark"]{--bg:oklch(0.19 0.015 255);--band:oklch(0.225 0.018 255);--card:oklch(0.235 0.018 255);--text:oklch(0.93 0.008 255);--muted:oklch(0.72 0.015 255);--line:oklch(0.32 0.02 255);--blue:oklch(0.76 0.11 250);--blue-2:oklch(0.85 0.08 250);--blue-soft:oklch(0.3 0.05 255);--amber:oklch(0.8 0.1 75);--amber-line:oklch(0.45 0.07 70);--ph:oklch(0.27 0.02 255)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.65;transition:background .2s,color .2s}
 a{color:var(--blue);text-decoration:none}
 a:hover{color:var(--blue-2);text-decoration:underline;text-underline-offset:3px}
-p{margin:0 0 1em;text-wrap:pretty}
-.in{max-width:1060px;margin:0 auto;padding:0 32px}
-.bar{position:sticky;top:0;z-index:10;background:color-mix(in oklch,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar .in{display:flex;align-items:center;gap:28px;height:60px}
-.brand{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--text);margin-right:auto;white-space:nowrap}
-.brand:hover{color:var(--text);text-decoration:none}
-.menu{display:flex;gap:24px;font-size:16px;overflow-x:auto;scrollbar-width:none}
-.menu a{color:var(--muted);white-space:nowrap;padding:18px 0;border-bottom:2px solid transparent}
-.menu a:hover{color:var(--text);text-decoration:none}
-.menu a.on{color:var(--text);border-color:var(--blue)}
-.theme{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;padding:0}
-.theme span{width:14px;height:14px;border-radius:50%;background:linear-gradient(90deg,var(--text) 50%,transparent 50%);border:1.5px solid var(--text)}
-.hero{background:var(--band);border-bottom:1px solid var(--line)}
-.hero .in{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:64px;align-items:center;padding-top:64px;padding-bottom:64px}
-.kicker{font-size:15px;font-weight:600;color:var(--blue);margin:0 0 8px;letter-spacing:.01em}
-h1{font-family:var(--serif);font-weight:600;font-size:52px;line-height:1.05;margin:0 0 20px;letter-spacing:-.015em}
-.bio{max-width:62ch}
-.bio b{font-weight:600}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.btn i{font-size:16px;width:16px;text-align:center;opacity:.85}
-.btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px;font-weight:500;padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);transition:border-color .15s,color .15s}
-.btn:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
-.btn.main{background:var(--blue);border-color:var(--blue);color:var(--bg)}
-.btn.main:hover{background:var(--blue-2);color:var(--bg)}
-.photo{margin:0}
-.ph{position:relative;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted);text-align:center;padding:8px}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.photo .ph{width:260px;aspect-ratio:1;border-radius:14px}
-.photo figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.4}
-section{padding:64px 0 0}
-h2{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;margin:0 0 24px;letter-spacing:-.01em;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.two{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px}
-.news{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
-.news li{position:relative;padding:0 0 18px 22px;font-size:16px;line-height:1.5}
-.news li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)}
-.news time{display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase}
-.themes{display:flex;flex-direction:column;gap:16px}
-.theme-c+.theme-c,.themes+.theme-c{margin-top:16px}
-.themes>.theme-c+.theme-c{margin-top:0}
-.theme-c{padding:22px 24px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
-.theme-c h3{margin:0 0 6px;font-size:19px;font-weight:600;line-height:1.3}
-.theme-c p{margin:0 0 8px;color:var(--muted);font-size:16.5px}
-.theme-c .rel{font-size:15px;margin:0}
-.theme-c h3{margin:0}
-.theme-c .st{font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
-#research h2{margin-bottom:24px}
-.info summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:15px;font-weight:500;color:var(--blue)}
-.info summary::-webkit-details-marker{display:none}
-.info summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
-.info[open] summary::after{transform:rotate(225deg) translate(-1px,-1px)}
-.info summary:hover{color:var(--blue-2)}
-.info[open] summary{margin-bottom:10px}
-.info p:first-of-type{animation:open .25s ease}
-.filters{display:flex;gap:6px;font-family:var(--sans)}
-.filters button{font:500 14px var(--sans);padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:var(--bg)}
-.pubs{display:flex;flex-direction:column}
-.pub{border-top:1px solid var(--line)}
-.pub:last-child{border-bottom:1px solid var(--line)}
-.pub[hidden]{display:none}
-.pub summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:20px;align-items:center;padding:22px 0}
-.pub summary::-webkit-details-marker{display:none}
-.pub summary:hover h3{color:var(--blue)}
-.chev{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);position:relative;transition:transform .25s,background .2s}
-.chev::after{content:"";position:absolute;left:50%;top:45%;width:8px;height:8px;border-right:1.5px solid var(--text);border-bottom:1.5px solid var(--text);transform:translate(-50%,-50%) rotate(45deg)}
-.pub[open] .chev{transform:rotate(180deg);background:var(--blue-soft);border-color:var(--blue-soft)}
-.pub summary:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:4px}
-.pub .more{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;padding:0 52px 26px 0;animation:open .25s ease}
-.pub .ph{aspect-ratio:16/10;border-radius:8px}
-.pub h3{margin:0 0 6px;font-size:19px;font-weight:600;line-height:1.35;transition:color .15s}
-.pub .au{font-size:16px;color:var(--muted);margin:0 0 4px}
-.pub .au b{color:var(--text);font-weight:600}
-.pub .ve{font-size:16px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.tag{font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:4px;background:var(--blue-soft);color:var(--blue-2);letter-spacing:.02em}
-.tag.rev{background:transparent;border:1px solid var(--amber-line);color:var(--amber)}
-.pub .tl{font-size:16.5px;color:var(--text);margin:0 0 12px}
-.hint{font-size:14px;color:var(--muted);margin:12px 0 0}
-@keyframes open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-.links{display:flex;flex-wrap:wrap;gap:16px;font-size:15px;font-weight:500}
-.links button{font:inherit;color:var(--blue);background:none;border:0;padding:0;cursor:pointer}
-.links button:hover{text-decoration:underline;text-underline-offset:3px}
-pre.bib{display:none;margin:12px 0 0;padding:14px 16px;background:var(--band);border:1px solid var(--line);border-radius:6px;font:13px/1.55 ui-monospace,monospace;color:var(--text);overflow-x:auto;white-space:pre}
-pre.bib.open{display:block}
-.teach{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding:22px 24px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
-.teach h3{margin:0;font-size:19px;font-weight:600}
-.teach .when{font-size:15px;color:var(--muted);white-space:nowrap}
-.teach p{margin:0;grid-column:1/-1;color:var(--muted);font-size:16.5px}
-.contact{margin-top:72px;background:var(--band);border-top:1px solid var(--line)}
-.contact .in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;padding-top:48px;padding-bottom:48px}
-.contact h2{margin-bottom:10px}
-.contact p{max-width:56ch;color:var(--muted);margin:0}
-.contact address{font-style:normal;font-size:15px;color:var(--muted);line-height:1.55;text-align:right}
-.foot{font-size:14px;color:var(--muted);padding:18px 0 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media (max-width:880px){
-.hero .in{grid-template-columns:1fr;gap:28px;padding-top:40px;padding-bottom:40px}
-.photo{order:-1;display:flex;align-items:center;gap:16px}
-.photo .ph{width:96px;border-radius:50%}
-.photo figcaption{margin:0}
-h1{font-size:40px}
-.two{grid-template-columns:1fr;gap:56px}
-.pub .more{grid-template-columns:1fr;gap:14px;padding-right:0}
-.pub .ph{max-width:360px}
-.contact .in{grid-template-columns:1fr}
-.contact address{text-align:left}
-}
-@media (max-width:600px){
-.in{padding:0 20px}
-.bar .in{gap:14px}
-.brand{display:none}
-.menu{margin-right:auto;gap:18px}
-body{font-size:17px}
-}
+p{text-wrap:pretty}
+summary::-webkit-details-marker{display:none}
+[data-pub][open] [data-chev]{transform:rotate(180deg);background:var(--blue-soft);border-color:var(--blue-soft)}
+[data-pub] summary:hover h4{color:var(--blue)}
+[data-h="0"]:hover{color:var(--text) !important}
+[data-h="1"]:hover{background:var(--blue-2) !important;border-color:var(--blue-2) !important;color:var(--bg) !important}
+[data-h="2"]:hover{border-color:var(--blue) !important;color:var(--blue) !important}
+[data-h="3"]:hover{text-decoration:underline !important}
 </style>
 </head>
 <body>
-<header class="bar">
-<div class="in">
-<a class="brand" href="#about">Pankaj Kumar</a>
-<nav class="menu">
-<a href="#about" class="on">About</a>
-<a href="#research">Research &amp; News</a>
-<a href="#publications">Publications</a>
-<a href="#teaching">Teaching</a>
-<a href="media/resume.pdf">CV</a>
+<header data-bar="" style="position:sticky;top:0;z-index:10;background:color-mix(in oklch,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)">
+<div style="max-width:1060px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:28px;height:60px">
+<a href="#about" data-top="" style="font-family:var(--serif);font-weight:600;font-size:20px;color:var(--text);margin-right:auto;white-space:nowrap;text-decoration:none">Pankaj Kumar</a>
+<nav style="display:flex;gap:24px;font-size:16px;overflow-x:auto;scrollbar-width:none">
+<a data-nav="" href="#about" style="color:var(--muted);white-space:nowrap;padding:18px 0;border-bottom:2px solid transparent;text-decoration:none" data-h="0">About</a>
+<a data-nav="" href="#research" style="color:var(--muted);white-space:nowrap;padding:18px 0;border-bottom:2px solid transparent;text-decoration:none" data-h="0">Research</a>
+<a data-nav="" href="#teaching" style="color:var(--muted);white-space:nowrap;padding:18px 0;border-bottom:2px solid transparent;text-decoration:none" data-h="0">Teaching</a>
+<a href="media/resume.pdf" style="color:var(--muted);white-space:nowrap;padding:18px 0;border-bottom:2px solid transparent;text-decoration:none" data-h="0">CV</a>
 </nav>
-<button class="theme" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"><span></span></button>
+<button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode" style="flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;padding:0"><span style="width:14px;height:14px;border-radius:50%;background:linear-gradient(90deg,var(--text) 50%,transparent 50%);border:1.5px solid var(--text)"></span></button>
 </div>
 </header>
-<div class="hero" id="about">
-<div class="in">
-<div>
-<p class="kicker">PhD Scholar · School of Computer Science, NISER</p>
-<h1>Pankaj Kumar</h1>
-<div class="bio">
-<p>I am a third-year PhD scholar in Computer Science at the National Institute of Science Education and Research (NISER), Bhubaneswar, and a member of <a href="https://smlab.niser.ac.in/">SMLab</a>, supervised by Dr. Subhankar Mishra.</p>
-<p>My research focuses on the <b>robustness of modern machine learning systems</b>, with a focus on large language models, graph foundation models and knowledge-graph question answering pipelines. I study how these systems fail under adversarial and distributional shifts and trace each failure to the component responsible. My long-term goal is to use these insights to build <b>robust hybrid architectures</b> that integrate graph neural networks with large language models, combining structured relational reasoning with the flexibility of language.</p>
+
+<div id="about" style="background:var(--band);border-bottom:1px solid var(--line)">
+<div style="max-width:1060px;margin:0 auto;padding:56px 32px;display:flex;flex-wrap:wrap-reverse;gap:32px 64px;align-items:center">
+<div style="flex:1 1 480px;min-width:0">
+<p style="font-size:15px;font-weight:600;color:var(--blue);margin:0 0 8px;letter-spacing:.01em">PhD Scholar · School of Computer Science, NISER</p>
+<h1 style="font-family:var(--serif);font-weight:600;font-size:52px;line-height:1.05;margin:0 0 20px;letter-spacing:-.015em">Pankaj Kumar</h1>
+<div style="max-width:62ch">
+<p style="margin:0 0 1em">I am a third-year PhD scholar in Computer Science at the National Institute of Science Education and Research (NISER), Bhubaneswar, and a member of <a href="https://smlab.niser.ac.in/">SMLab</a>, supervised by Dr. Subhankar Mishra.</p>
+<p style="margin:0">My research focuses on the <b style="font-weight:600">robustness of modern machine learning systems</b>, with a focus on large language models, graph foundation models and knowledge-graph question answering pipelines. I study how these systems fail under adversarial and distributional shifts and trace each failure to the component responsible. My long-term goal is to use these insights to build <b style="font-weight:600">robust hybrid architectures</b> that integrate graph neural networks with large language models, combining structured relational reasoning with the flexibility of language.</p>
 </div>
-<div class="actions">
-<a class="btn main" href="mailto:pankaj.kumar@niser.ac.in"><i class="fa-regular fa-envelope"></i>Email me</a>
-<a class="btn" href="https://scholar.google.com/citations?user=XXXX&amp;hl=en"><i class="fa-brands fa-google-scholar"></i>Google Scholar</a>
-<a class="btn" href="https://github.com/pankajkumar6002"><i class="fa-brands fa-github"></i>GitHub</a>
-<a class="btn" href="https://www.linkedin.com/in/pankaj-kumar-0b5421265"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
-<a class="btn" href="media/resume.pdf"><i class="fa-regular fa-file-pdf"></i>CV</a>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
+<a href="mailto:pankaj.kumar@niser.ac.in" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px;font-weight:500;padding:8px 16px;border-radius:6px;border:1px solid var(--blue);background:var(--blue);color:var(--bg);text-decoration:none" data-h="1"><i class="fa-regular fa-envelope" style="font-size:16px;width:16px;text-align:center;opacity:.85"></i>Email me</a>
+<a href="https://scholar.google.com/citations?user=XXXX&amp;hl=en" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px;font-weight:500;padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);text-decoration:none" data-h="2"><i class="fa-brands fa-google-scholar" style="font-size:16px;width:16px;text-align:center;opacity:.85"></i>Google Scholar</a>
+<a href="https://github.com/pankajkumar6002" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px;font-weight:500;padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);text-decoration:none" data-h="2"><i class="fa-brands fa-github" style="font-size:16px;width:16px;text-align:center;opacity:.85"></i>GitHub</a>
+<a href="https://www.linkedin.com/in/pankaj-kumar-0b5421265" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px;font-weight:500;padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);text-decoration:none" data-h="2"><i class="fa-brands fa-linkedin" style="font-size:16px;width:16px;text-align:center;opacity:.85"></i>LinkedIn</a>
+<a href="media/resume.pdf" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px;font-weight:500;padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);text-decoration:none" data-h="2"><i class="fa-regular fa-file-pdf" style="font-size:16px;width:16px;text-align:center;opacity:.85"></i>CV</a>
 </div>
 </div>
-<figure class="photo">
-<div class="ph"><span>media/profile.jpg</span><img src="media/profile.jpg" alt="Pankaj Kumar" onerror="this.remove()"></div>
-<figcaption>SMLab, NISER Bhubaneswar</figcaption>
+<figure style="margin:0;flex:0 0 220px">
+<div style="position:relative;width:220px;aspect-ratio:1;border-radius:14px;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted)"><span>media/profile.jpg</span><img src="media/profile.jpg" alt="Pankaj Kumar" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<figcaption style="font-size:14px;color:var(--muted);margin-top:10px;line-height:1.4">SMLab, NISER Bhubaneswar</figcaption>
 </figure>
 </div>
 </div>
-<main class="in">
-<section id="research">
-<div class="two">
+
+<main style="max-width:1060px;margin:0 auto;padding:0 32px">
+<section id="research" style="padding:64px 0 0">
+<div style="display:flex;flex-wrap:wrap;gap:56px">
+<div style="flex:1 1 560px;min-width:0">
+<h2 style="font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em">Research &amp; Publications</h2>
+<p style="font-size:15px;color:var(--muted);margin:0 0 36px">Click a paper for its summary, links and citation.</p>
+
+<div style="display:flex;flex-direction:column">
+
 <div>
-<h2>Research</h2>
-<div class="themes">
-<article class="theme-c" data-date="2026-09">
-<p class="st">Under review</p>
-<h3>Efficient long-context inference</h3>
-<details class="info">
-<summary>Click here for more info</summary>
-<p>The key–value cache grows with context length and quickly dominates memory during LLM inference. I study when cached entries can be safely evicted, using a partition-aware, gated eviction policy that preserves generation quality under a fixed memory budget.</p>
-<p class="rel">Related: <a href="#p-page">PAGE: Partition-Aware Gated KV-Cache Eviction</a></p>
-</details>
-<template class="nw">Completed <a href="#p-page">PAGE: Partition-Aware Gated KV-Cache Eviction</a>; the paper is now under review.</template>
-</article>
-<article class="theme-c" data-date="2026-07">
-<p class="st">Preprint · Under review</p>
-<h3>Robustness of graph foundation models</h3>
-<details class="info">
-<summary>Click here for more info</summary>
-<p>A graph foundation model maps every input into one shared representation, the alignment layer, before any task reasoning. This work identifies the alignment layer as a distinct attack surface and studies inference-time attacks on six public graph foundation models spanning spectral tokenizers, text embedding spaces and a discrete codebook.</p>
-<p class="rel">Related: <a href="#p-gfm">Attacking Graph Foundation Models Through Their Shared Representation</a></p>
-</details>
-<template class="nw">Preprint on <a href="#p-gfm">attacking graph foundation models</a> is out on <a href="https://arxiv.org/abs/2607.18567">arXiv</a>.</template>
-</article>
-<article class="theme-c" data-date="2026-05">
-<p class="st">Preprint · Under review</p>
-<h3>Reliability of knowledge-graph question answering</h3>
-<details class="info">
-<summary>Click here for more info</summary>
-<p>GNN-based KGQA pipelines process a question through four stages: entity linking, subgraph retrieval, GNN reasoning and answer generation. Using a stage-isolation protocol with answer-preserving adversarial perturbations on ComplexWebQuestions and WebQSP, this work shows that subgraph construction, rather than the GNN reasoner, accounts for nearly all of the end-to-end failure.</p>
-<p class="rel">Related: <a href="#p-kgqa">Query-Side Attacks on GNN-Based KGQA</a> · <a href="https://github.com/pankajkumar6002/atkgrag">Code</a></p>
-</details>
-<template class="nw">Preprint on <a href="#p-kgqa">query-side attacks on GNN-based KGQA</a> is out on <a href="https://arxiv.org/abs/2608.25922">arXiv</a>, with perturbed datasets and code released.</template>
-</article>
-<article class="theme-c" data-date="2025-05">
-<p class="st">Survey · TMLR 2025</p>
-<h3>Robustness of large language models</h3>
-<details class="info">
-<summary>Click here for more info</summary>
-<p>Reliable deployment of LLMs requires robustness well beyond resistance to adversarial inputs. My survey in TMLR organises this broader landscape, covering out-of-distribution generalization, bias and fairness, contextual understanding and shortcut learning, together with the mitigation strategies and evaluation metrics used for each.</p>
-<p class="rel">Related: <a href="#p-survey">TMLR survey</a> · <a href="https://arxiv.org/abs/2505.18658">arXiv</a></p>
-</details>
-<template class="nw">Posted our survey on robustness in large language models to <a href="https://arxiv.org/abs/2505.18658">arXiv</a>; it has since been published in <a href="https://openreview.net/forum?id=Bchvaaod6g">TMLR</a>.</template>
-</article>
-</div>
-</div>
-<aside id="news">
-<h2>News</h2>
-<ul class="news">
-<li data-date="2026-01">Teaching Assistant for CS-101: Introduction to Programming at NISER.</li>
-<li data-date="2024-07" data-label="2024">Joined the School of Computer Science, NISER, as a PhD scholar.</li>
-<li data-date="2024-02">Qualified UGC-JRF with All India Rank 126.</li>
-</ul>
-</aside>
-</div>
-</section>
-<section id="Research and publications">
-<h2>Publications <span class="filters" role="group" aria-label="Filter publications"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="graph">Graphs</button><button aria-pressed="false" data-f="llm">LLMs</button></span></h2>
-<div class="pubs">
-<details class="pub" id="p-page" data-t="llm">
-<summary><div class="sum"><h3>PAGE: Partition-Aware Gated KV-Cache Eviction</h3><p class="au"><b>Pankaj Kumar</b>, Subhankar Mishra</p><p class="ve"><span>2026</span><span class="tag rev">Under review</span></p></div><span class="chev" aria-hidden="true"></span></summary>
-<div class="more">
-<div class="ph"><span>media/teaser-page.png</span><img src="media/teaser-page.png" alt="" onerror="this.remove()"></div>
-<div><p class="tl">A gated, partition-aware policy that decides when to evict entries from the KV cache during long-context LLM inference. Paper link will be added once public.</p></div>
+<details data-pub="" id="p-agents" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<summary style="list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:20px;align-items:center;padding:18px 0">
+<div><p style="font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--blue);margin:0 0 4px">Reliability of multi-agent LLM systems</p><h4 style="margin:0 0 4px;font-size:18px;font-weight:600;line-height:1.35;transition:color .15s">When Agents Lie: Verifying Multi-Agent Claims Before Voting</h4><p style="font-size:15.5px;color:var(--muted);margin:0 0 4px"><b style="color:var(--text);font-weight:600">Pankaj Kumar</b>, Subhankar Mishra</p><p style="font-size:15.5px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span>2026</span><span style="font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:4px;border:1px solid var(--amber-line);color:var(--amber);letter-spacing:.02em">Under review</span></p></div>
+<span data-chev="" aria-hidden="true" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,background .2s"><span style="width:8px;height:8px;border-right:1.5px solid var(--text);border-bottom:1.5px solid var(--text);transform:translateY(-2px) rotate(45deg)"></span></span>
+</summary>
+<div style="display:flex;flex-wrap:wrap;gap:16px 24px;padding:0 0 24px">
+<div style="position:relative;flex:0 0 200px;aspect-ratio:16/10;border-radius:8px;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted)"><span>media/teaser-agents.png</span><img src="media/teaser-agents.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<div style="flex:1 1 260px;min-width:0"><p style="font-size:16.5px;margin:0">Multi-agent LLM systems settle answers by voting or debate, so a majority of agents arguing for a wrong answer with invented evidence can win decisively. We propose an input-grounded verification framework in which a coordinator checks each claim against its own dispatch record and excludes agents with rejected claims from the vote, cutting attack success from above 0.97 to 0.025 or below with no external knowledge source and no extra model call. Paper link will be added once public.</p></div>
 </div>
 </details>
-<details class="pub" id="p-gfm" data-t="graph">
-<summary><div class="sum"><h3>Attacking Graph Foundation Models Through Their Shared Representation</h3><p class="au"><b>Pankaj Kumar</b>, Subhankar Mishra</p><p class="ve"><span>arXiv preprint, 2026</span><span class="tag rev">Under review</span></p></div><span class="chev" aria-hidden="true"></span></summary>
-<div class="more">
-<div class="ph"><span>media/teaser-gfm.png</span><img src="media/teaser-gfm.png" alt="" onerror="this.remove()"></div>
-<div><p class="tl">Identifies the alignment layer, the shared representation every graph foundation model maps inputs into, as a distinct attack surface, and evaluates representation-space and realizable input-space attacks on six public models.</p><div class="links"><a href="https://arxiv.org/abs/2607.18567">arXiv</a><a href="https://arxiv.org/pdf/2607.18567">PDF</a><button data-bib>BibTeX</button></div><pre class="bib">@article{kumar2026attacking,
+<details data-pub="" id="p-page" style="border-bottom:1px solid var(--line)">
+<summary style="list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:20px;align-items:center;padding:18px 0">
+<div><p style="font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--blue);margin:0 0 4px">Efficient long-context inference</p><h4 style="margin:0 0 4px;font-size:18px;font-weight:600;line-height:1.35;transition:color .15s">PAGE: Partition-Aware Gated KV-Cache Eviction</h4><p style="font-size:15.5px;color:var(--muted);margin:0 0 4px"><b style="color:var(--text);font-weight:600">Pankaj Kumar</b>, Subhankar Mishra</p><p style="font-size:15.5px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span>arXiv preprint, 2026</span><span style="font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:4px;border:1px solid var(--amber-line);color:var(--amber);letter-spacing:.02em">Under review</span></p></div>
+<span data-chev="" aria-hidden="true" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,background .2s"><span style="width:8px;height:8px;border-right:1.5px solid var(--text);border-bottom:1.5px solid var(--text);transform:translateY(-2px) rotate(45deg)"></span></span>
+</summary>
+<div style="display:flex;flex-wrap:wrap;gap:16px 24px;padding:0 0 24px">
+<div style="position:relative;flex:0 0 200px;aspect-ratio:16/10;border-radius:8px;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted)"><span>media/teaser-page.png</span><img src="media/teaser-page.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<div style="flex:1 1 260px;min-width:0">
+<p style="font-size:16.5px;margin:0 0 12px">The key–value cache grows with context length and quickly dominates memory during long-context LLM inference. PAGE is a gated, partition-aware policy that decides when cached entries can be safely evicted, preserving generation quality under a fixed memory budget.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px;font-size:15px;font-weight:500"><a href="https://arxiv.org/abs/2609.22157">arXiv</a><a href="https://arxiv.org/pdf/2609.22157">PDF</a><button data-bib="" style="font:inherit;color:var(--blue);background:none;border:0;padding:0;cursor:pointer" data-h="3">BibTeX</button></div>
+<pre style="display:none;margin:12px 0 0;padding:14px 16px;background:var(--band);border:1px solid var(--line);border-radius:6px;font:13px/1.55 ui-monospace,monospace;color:var(--text);overflow-x:auto;white-space:pre">@article{kumar2026page,
+  title   = {PAGE: Partition-Aware Gated KV-Cache Eviction},
+  author  = {Kumar, Pankaj and Mishra, Subhankar},
+  journal = {arXiv preprint arXiv:2609.22157},
+  year    = {2026}
+}</pre>
+</div>
+</div>
+</details>
+</div>
+
+<div>
+<details data-pub="" id="p-gfm" style="border-bottom:1px solid var(--line)">
+<summary style="list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:20px;align-items:center;padding:18px 0">
+<div><p style="font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--blue);margin:0 0 4px">Robustness of graph foundation models</p><h4 style="margin:0 0 4px;font-size:18px;font-weight:600;line-height:1.35;transition:color .15s">Attacking Graph Foundation Models Through Their Shared Representation</h4><p style="font-size:15.5px;color:var(--muted);margin:0 0 4px"><b style="color:var(--text);font-weight:600">Pankaj Kumar</b>, Subhankar Mishra</p><p style="font-size:15.5px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span>arXiv preprint, 2026</span><span style="font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:4px;border:1px solid var(--amber-line);color:var(--amber);letter-spacing:.02em">Under review</span></p></div>
+<span data-chev="" aria-hidden="true" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,background .2s"><span style="width:8px;height:8px;border-right:1.5px solid var(--text);border-bottom:1.5px solid var(--text);transform:translateY(-2px) rotate(45deg)"></span></span>
+</summary>
+<div style="display:flex;flex-wrap:wrap;gap:16px 24px;padding:0 0 24px">
+<div style="position:relative;flex:0 0 200px;aspect-ratio:16/10;border-radius:8px;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted)"><span>media/teaser-gfm.png</span><img src="media/teaser-gfm.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<div style="flex:1 1 260px;min-width:0">
+<p style="font-size:16.5px;margin:0 0 12px">Every graph foundation model maps its inputs into one shared representation before any task reasoning, which makes that alignment layer an attack surface in its own right. We evaluate representation-space and realizable input-space attacks on six public graph foundation models spanning spectral tokenizers, text embedding spaces and a discrete codebook.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px;font-size:15px;font-weight:500"><a href="https://arxiv.org/abs/2607.18567">arXiv</a><a href="https://arxiv.org/pdf/2607.18567">PDF</a><button data-bib="" style="font:inherit;color:var(--blue);background:none;border:0;padding:0;cursor:pointer" data-h="3">BibTeX</button></div>
+<pre style="display:none;margin:12px 0 0;padding:14px 16px;background:var(--band);border:1px solid var(--line);border-radius:6px;font:13px/1.55 ui-monospace,monospace;color:var(--text);overflow-x:auto;white-space:pre">@article{kumar2026attacking,
   title   = {Attacking Graph Foundation Models Through Their Shared Representation},
   author  = {Kumar, Pankaj and Mishra, Subhankar},
   journal = {arXiv preprint arXiv:2607.18567},
   year    = {2026}
-}</pre></div>
+}</pre>
+</div>
 </div>
 </details>
-<details class="pub" id="p-kgqa" data-t="graph llm">
-<summary><div class="sum"><h3>Query-Side Attacks on GNN-Based KGQA: Tracing Failures from Entity Linking to Answer Generation</h3><p class="au"><b>Pankaj Kumar</b>, Subhankar Mishra</p><p class="ve"><span>arXiv preprint, 2026</span><span class="tag rev">Under review</span></p></div><span class="chev" aria-hidden="true"></span></summary>
-<div class="more">
-<div class="ph"><span>media/teaser-kgqa.png</span><img src="media/teaser-kgqa.png" alt="" onerror="this.remove()"></div>
-<div><p class="tl">A stage-resolved robustness study of a GNN-based KGQA pipeline. Answer-preserving perturbations of the question reveal that subgraph construction, not GNN reasoning, drives the end-to-end collapse, separating answer presence from answer reachability.</p><div class="links"><a href="https://arxiv.org/abs/2608.25922">arXiv</a><a href="https://arxiv.org/pdf/2608.25922">PDF</a><a href="https://github.com/pankajkumar6002/atkgrag">Code</a><button data-bib>BibTeX</button></div><pre class="bib">@article{kumar2026queryside,
+</div>
+
+<div>
+<details data-pub="" id="p-kgqa" style="border-bottom:1px solid var(--line)">
+<summary style="list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:20px;align-items:center;padding:18px 0">
+<div><p style="font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--blue);margin:0 0 4px">Reliability of knowledge-graph question answering</p><h4 style="margin:0 0 4px;font-size:18px;font-weight:600;line-height:1.35;transition:color .15s">Query-Side Attacks on GNN-Based KGQA: Tracing Failures from Entity Linking to Answer Generation</h4><p style="font-size:15.5px;color:var(--muted);margin:0 0 4px"><b style="color:var(--text);font-weight:600">Pankaj Kumar</b>, Subhankar Mishra</p><p style="font-size:15.5px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span>arXiv preprint, 2026</span><span style="font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:4px;border:1px solid var(--amber-line);color:var(--amber);letter-spacing:.02em">Under review</span></p></div>
+<span data-chev="" aria-hidden="true" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,background .2s"><span style="width:8px;height:8px;border-right:1.5px solid var(--text);border-bottom:1.5px solid var(--text);transform:translateY(-2px) rotate(45deg)"></span></span>
+</summary>
+<div style="display:flex;flex-wrap:wrap;gap:16px 24px;padding:0 0 24px">
+<div style="position:relative;flex:0 0 200px;aspect-ratio:16/10;border-radius:8px;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted)"><span>media/teaser-kgqa.png</span><img src="media/teaser-kgqa.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<div style="flex:1 1 260px;min-width:0">
+<p style="font-size:16.5px;margin:0 0 12px">GNN-based KGQA pipelines pass a question through entity linking, subgraph retrieval, GNN reasoning and answer generation. Isolating each stage under answer-preserving perturbations on ComplexWebQuestions and WebQSP shows that subgraph construction, not GNN reasoning, drives the end-to-end collapse, separating answer presence from answer reachability.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px;font-size:15px;font-weight:500"><a href="https://arxiv.org/abs/2608.25922">arXiv</a><a href="https://arxiv.org/pdf/2608.25922">PDF</a><a href="https://github.com/pankajkumar6002/atkgrag">Code</a><button data-bib="" style="font:inherit;color:var(--blue);background:none;border:0;padding:0;cursor:pointer" data-h="3">BibTeX</button></div>
+<pre style="display:none;margin:12px 0 0;padding:14px 16px;background:var(--band);border:1px solid var(--line);border-radius:6px;font:13px/1.55 ui-monospace,monospace;color:var(--text);overflow-x:auto;white-space:pre">@article{kumar2026queryside,
   title   = {Query-Side Attacks on GNN-Based KGQA: Tracing Failures from Entity Linking to Answer Generation},
   author  = {Kumar, Pankaj and Mishra, Subhankar},
   journal = {arXiv preprint arXiv:2608.25922},
   year    = {2026}
-}</pre></div>
+}</pre>
+</div>
 </div>
 </details>
-<details class="pub" id="p-survey" data-t="llm">
-<summary><div class="sum"><h3>Robustness in Large Language Models: A Survey of Mitigation Strategies and Evaluation Metrics</h3><p class="au"><b>Pankaj Kumar</b>, Subhankar Mishra</p><p class="ve"><span>Transactions on Machine Learning Research, 2025</span><span class="tag">TMLR</span></p></div><span class="chev" aria-hidden="true"></span></summary>
-<div class="more">
-<div class="ph"><span>media/teaser-survey.png</span><img src="media/teaser-survey.png" alt="" onerror="this.remove()"></div>
-<div><p class="tl">A survey of LLM robustness beyond adversarial attacks, covering out-of-distribution generalization, bias and fairness, contextual understanding and shortcut learning, together with mitigation strategies and evaluation metrics.</p><div class="links"><a href="https://openreview.net/forum?id=Bchvaaod6g">OpenReview</a><a href="https://arxiv.org/abs/2505.18658">arXiv</a><button data-bib>BibTeX</button></div><pre class="bib">@article{kumar2025robustness,
+</div>
+
+<div>
+<details data-pub="" id="p-survey" style="border-bottom:1px solid var(--line)">
+<summary style="list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:20px;align-items:center;padding:18px 0">
+<div><p style="font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--blue);margin:0 0 4px">Robustness of large language models</p><h4 style="margin:0 0 4px;font-size:18px;font-weight:600;line-height:1.35;transition:color .15s">Robustness in Large Language Models: A Survey of Mitigation Strategies and Evaluation Metrics</h4><p style="font-size:15.5px;color:var(--muted);margin:0 0 4px"><b style="color:var(--text);font-weight:600">Pankaj Kumar</b>, Subhankar Mishra</p><p style="font-size:15.5px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span>Transactions on Machine Learning Research, 2025</span><span style="font-size:12.5px;font-weight:600;padding:1px 8px;border-radius:4px;background:var(--blue-soft);color:var(--blue-2);letter-spacing:.02em">TMLR</span></p></div>
+<span data-chev="" aria-hidden="true" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,background .2s"><span style="width:8px;height:8px;border-right:1.5px solid var(--text);border-bottom:1.5px solid var(--text);transform:translateY(-2px) rotate(45deg)"></span></span>
+</summary>
+<div style="display:flex;flex-wrap:wrap;gap:16px 24px;padding:0 0 24px">
+<div style="position:relative;flex:0 0 200px;aspect-ratio:16/10;border-radius:8px;background:repeating-linear-gradient(135deg,var(--ph) 0 8px,transparent 8px 16px),var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font:12px ui-monospace,monospace;color:var(--muted)"><span>media/teaser-survey.png</span><img src="media/teaser-survey.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+<div style="flex:1 1 260px;min-width:0">
+<p style="font-size:16.5px;margin:0 0 12px">Reliable deployment of LLMs needs robustness well beyond resistance to adversarial inputs. This survey organises the landscape across out-of-distribution generalization, bias and fairness, contextual understanding and shortcut learning, together with the mitigation strategies and evaluation metrics used for each.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px;font-size:15px;font-weight:500"><a href="https://openreview.net/forum?id=Bchvaaod6g">OpenReview</a><a href="https://arxiv.org/abs/2505.18658">arXiv</a><button data-bib="" style="font:inherit;color:var(--blue);background:none;border:0;padding:0;cursor:pointer" data-h="3">BibTeX</button></div>
+<pre style="display:none;margin:12px 0 0;padding:14px 16px;background:var(--band);border:1px solid var(--line);border-radius:6px;font:13px/1.55 ui-monospace,monospace;color:var(--text);overflow-x:auto;white-space:pre">@article{kumar2025robustness,
   title   = {Robustness in Large Language Models: A Survey of Mitigation Strategies and Evaluation Metrics},
   author  = {Kumar, Pankaj and Mishra, Subhankar},
   journal = {Transactions on Machine Learning Research},
   year    = {2025},
   url     = {https://openreview.net/forum?id=Bchvaaod6g}
-}</pre></div>
+}</pre>
+</div>
 </div>
 </details>
 </div>
-<p class="hint">Click a paper to see a summary, links and citation.</p>
+
+</div>
+</div>
+
+<aside id="news" style="flex:1 1 300px;min-width:0;max-width:380px">
+<div style="position:sticky;top:84px">
+<h2 style="font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;margin:0 0 24px;letter-spacing:-.01em">News</h2>
+<ul style="list-style:none;margin:0;padding:0;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:18px">
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">Oct 2026</time>Completed <a href="#p-agents">When Agents Lie: Verifying Multi-Agent Claims Before Voting</a>; the paper is now under review.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">Sep 2026</time>Completed <a href="#p-page">PAGE: Partition-Aware Gated KV-Cache Eviction</a>; the paper is under review and the preprint is on <a href="https://arxiv.org/abs/2609.22157">arXiv</a>.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">Jul 2026</time>Preprint on <a href="#p-gfm">attacking graph foundation models</a> is out on <a href="https://arxiv.org/abs/2607.18567">arXiv</a>.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">May 2026</time>Preprint on <a href="#p-kgqa">query-side attacks on GNN-based KGQA</a> is out on <a href="https://arxiv.org/abs/2608.25922">arXiv</a>, with perturbed datasets and code released.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">Jan 2026</time>Teaching Assistant for CS-101: Introduction to Programming at NISER.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">May 2025</time>Posted our survey on robustness in large language models to <a href="https://arxiv.org/abs/2505.18658">arXiv</a>; it has since been published in <a href="https://openreview.net/forum?id=Bchvaaod6g">TMLR</a>.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">2024</time>Joined the School of Computer Science, NISER, as a PhD scholar.</li>
+<li style="position:relative;padding-left:22px;font-size:16px;line-height:1.5"><span style="position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)"></span><time style="display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase">Feb 2024</time>Qualified UGC-JRF with All India Rank 126.</li>
+</ul>
+</div>
+</aside>
+</div>
 </section>
-<section id="teaching">
-<h2>Teaching</h2>
-<div class="teach">
-<h3>CS-101: Introduction to Programming</h3>
-<span class="when">Jan 2026 – May 2026</span>
-<p>Teaching Assistant, NISER · Instructor: Dr. Subhankar Mishra</p>
+
+<section id="teaching" style="padding:64px 0 0">
+<h2 style="font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;margin:0 0 24px;letter-spacing:-.01em">Teaching</h2>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding:22px 24px;border:1px solid var(--line);border-radius:10px;background:var(--card)">
+<h3 style="margin:0;font-size:19px;font-weight:600">CS-101: Introduction to Programming</h3>
+<span style="font-size:15px;color:var(--muted);white-space:nowrap">Jan 2026 – May 2026</span>
+<p style="margin:0;flex-basis:100%;color:var(--muted);font-size:16.5px">Teaching Assistant, NISER · Instructor: Dr. Subhankar Mishra</p>
 </div>
 </section>
 </main>
-<footer class="contact">
-<div class="in">
-<div>
-<h2>Get in touch</h2>
-<p>I am happy to discuss research and collaborations in graph learning and the robustness of language models. Email is the best way to reach me: <a href="mailto:pankaj.kumar@niser.ac.in">pankaj.kumar@niser.ac.in</a></p>
+
+<footer style="margin-top:72px;background:var(--band);border-top:1px solid var(--line)">
+<div style="max-width:1060px;margin:0 auto;padding:48px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px 40px;align-items:flex-end">
+<div style="flex:1 1 420px;min-width:0">
+<h2 style="font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;margin:0 0 10px;letter-spacing:-.01em">Get in touch</h2>
+<p style="max-width:56ch;color:var(--muted);margin:0">I am happy to discuss research and collaborations in graph learning and the robustness of language models. Email is the best way to reach me: <a href="mailto:pankaj.kumar@niser.ac.in">pankaj.kumar@niser.ac.in</a></p>
 </div>
-<address>School of Computer Science<br>NISER Bhubaneswar, Jatni<br>Khurda, Odisha 752050, India</address>
+<address style="font-style:normal;font-size:15px;color:var(--muted);line-height:1.55">School of Computer Science<br>NISER Bhubaneswar, Jatni<br>Khurda, Odisha 752050, India</address>
 </div>
-<div class="in foot"><span>© 2026 Pankaj Kumar</span><span>Last updated October 2026</span></div>
+<div style="max-width:1060px;margin:0 auto;padding:18px 32px 28px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>© 2026 Pankaj Kumar</span><span>Last updated November 2026</span></div>
 </footer>
 <script>
-document.getElementById('themeBtn').onclick=()=>{const r=document.documentElement,t=r.dataset.theme==='dark'?'light':'dark';r.dataset.theme=t;localStorage.setItem('pk-theme',t)};
-document.querySelectorAll('[data-bib]').forEach(b=>b.onclick=()=>b.parentElement.nextElementSibling.classList.toggle('open'));
-const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],nl=document.querySelector('.news');
-document.querySelectorAll('.theme-c[data-date]').forEach(c=>{const li=document.createElement('li');li.dataset.date=c.dataset.date;if(c.dataset.label)li.dataset.label=c.dataset.label;li.innerHTML=c.querySelector('template.nw').innerHTML;nl.appendChild(li)});
-[...nl.children].sort((a,b)=>b.dataset.date.localeCompare(a.dataset.date)).forEach(li=>{const[y,m]=li.dataset.date.split('-'),t=document.createElement('time');t.textContent=li.dataset.label||(m?M[+m-1]+' ':'')+y;li.prepend(t);nl.appendChild(li)});
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#p-"]');if(a){const d=document.querySelector(a.getAttribute('href'));if(d)d.open=true}});
-const fb=document.querySelectorAll('.filters button');
-fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.setAttribute('aria-pressed',x===b));const f=b.dataset.f;document.querySelectorAll('.pub').forEach(p=>p.hidden=f!=='all'&&!p.dataset.t.split(' ').includes(f))});
-const ml=[...document.querySelectorAll('.menu a[href^="#"]')],bar=document.querySelector('.bar');
-const secs=ml.map(a=>document.querySelector(a.getAttribute('href')));
-const setOn=i=>ml.forEach((a,j)=>a.classList.toggle('on',j===i));
-let lock=0;
-const spy=()=>{if(Date.now()<lock)return;const y=bar.offsetHeight+24;let i=0;secs.forEach((s,j)=>{if(s.getBoundingClientRect().top<=y)i=j});if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)i=secs.length-1;setOn(i)};
-ml.forEach((a,i)=>a.addEventListener('click',ev=>{ev.preventDefault();const t=secs[i].getBoundingClientRect().top+scrollY-bar.offsetHeight-(i?16:0);setOn(i);lock=Date.now()+900;scrollTo({top:i?t:0,behavior:'smooth'});history.replaceState(null,'',a.getAttribute('href'))}));
-addEventListener('scroll',spy,{passive:true});spy();
+(function(){
+  var root=document.documentElement;
+  root.dataset.theme=localStorage.getItem('pk-theme')||'light';
+  var bar=document.querySelector('[data-bar]'),links=[].slice.call(document.querySelectorAll('[data-nav]')),lock=0;
+  function off(){return (bar?bar.offsetHeight:60)+16}
+  function scrollToEl(el){scrollTo({top:el.getBoundingClientRect().top+scrollY-off(),behavior:'smooth'})}
+  function setOn(i){links.forEach(function(a,j){a.style.color=j===i?'var(--text)':'';a.style.borderBottomColor=j===i?'var(--blue)':'transparent'})}
+  document.getElementById('theme-toggle').addEventListener('click',function(){var t=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=t;localStorage.setItem('pk-theme',t)});
+  document.querySelector('[data-top]').addEventListener('click',function(e){e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
+  links.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();setOn(i);lock=Date.now()+900;if(i===0)scrollTo({top:0,behavior:'smooth'});else{var s=document.querySelector(a.getAttribute('href'));if(s)scrollToEl(s)}})});
+  document.querySelectorAll('[data-bib]').forEach(function(b){b.addEventListener('click',function(){var p=b.parentElement.nextElementSibling;p.style.display=p.style.display==='block'?'none':'block'})});
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#p-"]');if(!a)return;e.preventDefault();var d=document.getElementById(a.getAttribute('href').slice(1));if(d){d.open=true;scrollToEl(d)}});
+  function spy(){if(Date.now()<lock)return;var y=off()+8,i=0;links.forEach(function(a,j){var s=document.querySelector(a.getAttribute('href'));if(s&&s.getBoundingClientRect().top<=y)i=j});if(innerHeight+scrollY>=root.scrollHeight-4)i=links.length-1;setOn(i)}
+  addEventListener('scroll',spy,{passive:true});spy();
+})();
 </script>
 </body>
 </html>
